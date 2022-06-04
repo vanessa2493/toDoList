@@ -1,4 +1,16 @@
-
+const mapToArray = (object) => {
+    const array = [];
+  
+  
+    for (const elem in object) {
+      array.push({
+        ...object[elem],
+        idDB: elem,
+      });
+    }
+  
+    return array;
+  };
 
 
 // Slugify Function //
