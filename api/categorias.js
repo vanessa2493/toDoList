@@ -13,3 +13,9 @@ const getCategorias = async () => {
     return data
 }
 
+const deleteCategorias = async (data)=> {
+    await fetch(`https://todolist-f94ed-default-rtdb.firebaseio.com/categorias/${data}.json`, {
+            method: 'DELETE',
+            headers: { "Content-Type": "application/json", }, 
+        })
+}

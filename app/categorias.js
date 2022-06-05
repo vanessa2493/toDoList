@@ -1,27 +1,13 @@
 
 // function agregar categorias //
 const form = document.getElementById('categorias-form');
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const categoria = document.getElementById('is-categoria');
-    const value = categoria.value;
-    const slug = string_to_slug(value);
-
-    postCategoria({name: value, slug: slug});
-
-    //clean input
-    categoria.value = '';
-
-})
-
+const catfields = document.getElementById('catfields');
     
 
 const showCategories = async () => {
     const categorias = await getCategorias()
 
     const categoriasArray = mapToArray(categorias);
-    const card = document.getElementById('categorias-card');
    
     categoriasArray.forEach((cat) =>{
             const newCat = cat.name;
@@ -49,29 +35,41 @@ const showCategories = async () => {
                 row.appendChild(col1);
                 row.appendChild(col2);
         
-                card.appendChild(row);            
-    
+                catfields.appendChild(row);            
     
                 // -- Eliminar event -- //
             
-            // eliminar.addEventListener('click', (e)=> {
-            //     for (let i = 0; i < categoriasArray.length; i++){
-            //         if(categoriasArray[i].idDB === e.target.idDB){
-            //             categoriasArray.splice(categoriasArray[i], 1);
-            //         }
-            //     } // hasta acá llegué pero no estoy segura si habría que hacer un patch o put o algo así a la base de datos para modificarla así que por ahora es lo que hay pero va queriendooo
-            //     localStorage.setItem('ahorradas-data', JSON.stringify({
-            //         ...lS,
-            //         categories: categs
-            //     }))
-            //     catFields.innerHTML = "";
-    
-            //     showCategories()
+            eliminar.addEventListener('click', (e)=> {
+                for (let i = 0; i < categoriasArray.length; i++){
+                    if(categoriasArray[i].idDB === e.target.id){
+                        deleteCategorias(categoriasArray[i].idDB);
+                    }
+            } 
+            
+            catfields.innerHTML = '';
+             showCategories()
                 
     
-            // })
+            })
         })
 
         
 }
+
 showCategories()
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const categoria = document.getElementById('is-categoria');
+    const value = categoria.value;
+    const slug = string_to_slug(value);
+
+    postCategoria({name: value, slug: slug});
+
+    //clean input
+    categoria.value = '';
+
+    catfields.innerHTML = '';
+    showCategories()
+
+})

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="/toDoList/assets/styles.css">
+</head>
+<body>
+    
+    <header>
+        <div>
+            <nav class="navbar navbar-expand-lg bg-warning">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Categoria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Autores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Agregar Tarea</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container my-5">
+            <div class="card p-5" id="categorias-card">
+                <h2>Categorias</h2>
+                <form action="" id="categorias-form">
+                    <div class="col">
+                        <input type="text" name="categoria" id="is-categoria">
+                        <button class="btn btn-warning"> Agregar</button>
+                    </div>
+                </form>
+                <div id="catfields"></div>
+
+            </div>
+
+        </div>
+    </main>
+
+<script src="/toDoList/app/main.js"></script>
+<script src="/toDoList/api/categorias.js"></script>
+<script src="/toDoList/app/categorias.js"></script>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
