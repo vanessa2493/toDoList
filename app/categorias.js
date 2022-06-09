@@ -8,6 +8,8 @@ const showCategories = async () => {
     const categorias = await getCategorias()
 
     const categoriasArray = mapToArray(categorias);
+
+    catfields.innerHTML = '';
    
     categoriasArray.forEach((cat) =>{
             const newCat = cat.name;
@@ -39,37 +41,32 @@ const showCategories = async () => {
     
                 // -- Eliminar event -- //
             
-            eliminar.addEventListener('click', (e)=> {
+            eliminar.addEventListener('click', async (e)=> {
                 for (let i = 0; i < categoriasArray.length; i++){
                     if(categoriasArray[i].idDB === e.target.id){
-                        deleteCategorias(categoriasArray[i].idDB);
+                        await deleteCategorias(categoriasArray[i].idDB);
+                        await showCategories()
                     }
-            } 
-            
-            catfields.innerHTML = '';
-             showCategories()
-                
-    
+                } 
             })
         })
 
         
 }
 
-showCategories()
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const categoria = document.getElementById('is-categoria');
     const value = categoria.value;
     const slug = string_to_slug(value);
 
-    postCategoria({name: value, slug: slug});
+    await postCategoria({name: value, slug: slug});
 
     //clean input
     categoria.value = '';
 
     catfields.innerHTML = '';
-    showCategories()
+    await showCategories()
 
 })
