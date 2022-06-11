@@ -19,3 +19,11 @@ const deleteCategorias = async (data)=> {
             headers: { "Content-Type": "application/json", }, 
         })
 }
+
+const patchCategorias = async (category, data)=> {
+    await fetch(`https://todolist-f94ed-default-rtdb.firebaseio.com/categorias/${category}.json`, {
+            method: 'PATCH',
+            headers: { "Content-Type": "application/json", }, 
+            body: JSON.stringify(data)
+        })
+}

@@ -24,7 +24,7 @@ const showCategories = async () => {
                 span.classList.add('d-inline-block','bg-warning', 'bg-opacity-25', 'p-1', 's-tag');
                 col1.appendChild(span);
                 let editar = document.createElement('a');
-                editar.setAttribute('href', `./editar-categoria.html?${cat.slug}`);
+                editar.setAttribute('href', `./editar-categoria.html?id=${cat.slug}`);
                 editar.classList.add('me-2', 's-link');
                 editar.appendChild(document.createTextNode('Editar'));
                 col2.appendChild(editar);
@@ -54,6 +54,7 @@ const showCategories = async () => {
         
 }
 
+showCategories();
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
